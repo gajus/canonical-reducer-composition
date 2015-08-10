@@ -1,6 +1,10 @@
 # Canonical Reducer Composition
 
 * [Spec](#spec)
+   * [Reducer Definition](#reducer-definition)
+   * [Domain](#domain)
+   * [Action](#action)
+* [Schema](#schema)
 * [Implementation Example](#implementation-example)
 * [Benefits](#benefits)
 * [Redux Reducer Composition](#redux-reducer-composition)
@@ -13,13 +17,19 @@ Canonical Reducer Composition pattern requires that:
 
 ### Reducer Definition
 
-* Reducer definition **must** register at least one domain map.
+* Reducer definition **must** register at least one domain.
 * Action name **must** correspond to the action `name` property value.
 * Action name **must** be unique in the entire reducer definition object.
 
-## Domain Map
+### Domain
 
-* Domain map **can** own another domain map.
+* Domain **can** own another domain.
+* Domain **can** own multiple action handlers.
+
+### Action Handler
+
+* Action handler **must** be a function.
+* Action handler **must** return domain state.
 
 ### Action
 
@@ -32,10 +42,12 @@ Canonical Reducer Composition pattern requires that:
 * Action **can** define `metadata` property.
     * When defined, action `metadata` property value **must** be a plain object.
 
+## Schema
+
 ```js
 {
     <domain>: {
-        <action> (domain, action) {
+        <action handler> (domain, action) {
 
         }
     }
@@ -48,15 +60,15 @@ In addition, domain can define a sub-domain:
 {
     <domain>: {
         <domain>: {
-            <action> (domain, action) {
+            <action handler> (domain, action) {
 
             },
-            <action> (domain, action) {
+            <action handler> (domain, action) {
 
             }
         },
         <domain>: {
-            <action> (domain, action) {
+            <action handler> (domain, action) {
 
             }
         }
