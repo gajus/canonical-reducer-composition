@@ -11,12 +11,26 @@
 
 Canonical Reducer Composition pattern requires that:
 
-1. Action definition object has `type` property.
-1. Action definition object `type` property value tests `/^[A-Z\_]+$/`.
-1. Reducer definition object registers domains.
-1. Domain definition object registers actions.
-1. Action name corresponds to action definition object `type` property value.
-1. Action name is unique in the entire reducer definition object.
+### Reducer Definition
+
+* Reducer definition **must** register at least one domain map.
+* Action name **must** correspond to the action `name` property value.
+* Action name **must** be unique in the entire reducer definition object.
+
+## Domain Map
+
+* Domain map *can* own another domain map.
+
+### Action
+
+* Action **must** be a plain object.
+* Action **must** define `name` property.
+    * Action `name` property value **must** be a string.
+    * Action `name` property value **must** consist only of uppercase latin characters and one or more underscore characters (`/^[A-Z\_]+$/`).
+* Action **can** define `data` property`
+    * When defined, action `data` property value **must** be a plain object.
+* Action **can** define `metadata` property.
+    * When defined, action `metadata` property value **must** be a plain object.
 
 ```js
 {
@@ -49,17 +63,6 @@ In addition, domain can define a sub-domain:
     }
 }
 ```
-
-## Action
-
-* action *must* be a plain object.
-* action *must* define `name` property.
-* action `name` property value *must* be a string.
-* action `name` property value *must* consist only of uppercase latin characters and one or more underscore characters.
-* action *can* define `data` property`
-* when defined, action `data` property value *must* be a plain object.
-* action *can* define `metadata` property.
-* when defined, action `metadata` property value *must* be a plain object.
 
 ## Benefits
 
