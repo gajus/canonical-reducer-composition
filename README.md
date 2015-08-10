@@ -23,8 +23,9 @@ Canonical Reducer Composition pattern requires that:
 
 ### Domain
 
+* Domain **must** own only sub-domains or action handlers.
 * Domain **can** own another domain.
-* Domain **can** own multiple action handlers.
+* Domain **can** own action handlers.
 
 ### Action Handler
 
