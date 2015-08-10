@@ -30,6 +30,7 @@ Canonical Reducer Composition pattern requires that:
 ### Action Handler
 
 * Action handler **must** be a function.
+* Action handler **must** not mutate its arguments.
 * Action handler **must** return domain state.
 
 ### Action
