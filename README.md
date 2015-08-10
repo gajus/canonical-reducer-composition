@@ -19,7 +19,7 @@ Canonical Reducer Composition pattern requires that:
 
 ## Domain Map
 
-* Domain map *can* own another domain map.
+* Domain map **can** own another domain map.
 
 ### Action
 
