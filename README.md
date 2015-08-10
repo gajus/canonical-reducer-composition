@@ -1,7 +1,8 @@
 # Canonical Reducer Composition
 
 * [Spec](#spec)
-    * [Implementation Example](#implementation-example)
+* [Implementation Example](#implementation-example)
+* [Benefits](#benefits)
 * [Redux Reducer Composition](#redux-reducer-composition)
 * [Validator Library](#validator-library)
 * [Libraries](#libraries)
@@ -49,13 +50,26 @@ In addition, domain can define a sub-domain:
 }
 ```
 
+## Action
+
+* action *must* be a plain object.
+* action *must* define `name` property.
+* action `name` property value *must* be a string.
+* action `name` property value *must* consist only of uppercase latin characters and one or more underscore characters.
+* action *can* define `data` property`
+* when defined, action `data` property value *must* be a plain object.
+* action *can* define `metadata` property.
+* when defined, action `metadata` property value *must* be a plain object.
+
+## Benefits
+
 Canonical Reducer Composition has the following benefits:
 
 * Introduces reducer declaration convention.
 * Domain reducer function is called only if it registers an action.
 * Enables intuitive nesting of the domain model.
 
-### Implementation Example
+## Implementation Example
 
 ```js
 import {
