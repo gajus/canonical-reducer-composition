@@ -14,6 +14,7 @@ Canonical Reducer Composition pattern requires that:
 1. Reducer definition object registers domains.
 1. Domain definition object registers actions.
 1. Action name corresponds to action definition object `type` property value.
+1. Action name is unique in the entire reducer definition object.
 
 ```js
 {
