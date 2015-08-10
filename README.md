@@ -1,8 +1,5 @@
 # Canonical Reducer Composition
 
-[![Travis build status](http://img.shields.io/travis/gajus/canonical/master.svg?style=flat-square)](https://travis-ci.org/gajus/canonical)
-[![NPM version](http://img.shields.io/npm/v/canonical.svg?style=flat-square)](https://www.npmjs.org/package/canonical)
-
 * [Spec](#spec)
     * [Implementation Example](#implementation-example)
 * [Redux Reducer Composition](#redux-reducer-composition)
