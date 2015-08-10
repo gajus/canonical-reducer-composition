@@ -1,9 +1,11 @@
-* [Canonical Reducer Composition](#canonical-reducer-composition)
-    [Implementation Example](#implementation-example)
+# Canonical Reducer Composition
+
+* [Spec](#spec)
+    * [Implementation Example](#implementation-example)
 * [Redux Reducer Composition](#redux-reducer-composition)
 * [Libraries](#libraries)
 
-# Canonical Reducer Composition
+## Spec
 
 Canonical Reducer Composition pattern requires that:
 
@@ -49,7 +51,7 @@ Canonical Reducer Composition has the following benefits:
 * Domain reducer function is called only if it registers an action.
 * Enables intuitive nesting of the domain model.
 
-## Implementation Example
+### Implementation Example
 
 ```js
 import {
@@ -120,7 +122,7 @@ reducer = combineReducers(reducers);
 store = createStore(reducer, state);
 ```
 
-## Redux Reducer Composition
+### Redux Reducer Composition
 
 Redux utilizes the concept of [reducer composition](http://gaearon.github.io/redux/docs/basics/Reducers.html#splitting-reducers).
 
@@ -168,7 +170,7 @@ There are several problems with this:
 * Domain reducer function is called regardless of whether it can handle the action.
 * The overhead of maintaining the boilerplate.
 
-## Libraries
+### Libraries
 
 Libraries that implement Canonical Reducer Composition:
 
