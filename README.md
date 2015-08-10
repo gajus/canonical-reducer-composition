@@ -46,6 +46,8 @@ Canonical Reducer Composition pattern requires that:
 
 ## Schema
 
+Reducer definition with a single domain:
+
 ```js
 {
     <domain>: {
