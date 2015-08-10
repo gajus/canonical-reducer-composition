@@ -10,6 +10,7 @@
 Canonical Reducer Composition pattern requires that:
 
 1. Action definition object has `type` property.
+1. Action definition object `type` property value tests `/^[A-Z\_]$/`.
 1. Reducer definition object registers domains.
 1. Domain definition object registers actions.
 
