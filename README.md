@@ -1,14 +1,11 @@
+* [Canonical Reducer Composition](#canonical-reducer-composition)
+    [Implementation Example](#implementation-example)
+* [Redux Reducer Composition](#redux-reducer-composition)
+* [Libraries](#libraries)
+
 # Canonical Reducer Composition
 
-This library serves as a spec for Canonical Reducer Composition design pattern.
-
-## Libraries That Implement Canonical Reducer Composition
-
-* https://github.com/gajus/redux-immutable
-
-## Spec
-
-Canonical Reducer Composition `combineReducers` requires that:
+Canonical Reducer Composition pattern requires that:
 
 1. Action definition object has `type` property.
 1. Reducer definition object registers domains.
@@ -52,7 +49,7 @@ Canonical Reducer Composition has the following benefits:
 * Domain reducer function is called only if it registers an action.
 * Enables intuitive nesting of the domain model.
 
-### Example
+## Implementation Example
 
 ```js
 import {
@@ -64,7 +61,8 @@ import {
 } from 'redux-immutable';
 
 let state,
-    reducer;
+    reducer,
+    store;
 
 state = {
     // <domain>
@@ -170,4 +168,8 @@ There are several problems with this:
 * Domain reducer function is called regardless of whether it can handle the action.
 * The overhead of maintaining the boilerplate.
 
-To address these issues, `redux-immutable` adapts a pattern of convention over configuration. For documentation reference purposes, lets call it Canonical Reducer Composition.
+## Libraries
+
+Libraries that implement Canonical Reducer Composition:
+
+* https://github.com/gajus/redux-immutable
