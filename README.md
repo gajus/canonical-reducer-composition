@@ -87,6 +87,7 @@ Canonical Reducer Composition has the following benefits:
 * Introduces reducer declaration convention.
 * Domain reducer function is called only if it registers an action.
 * Enables intuitive nesting of the domain model.
+* Enables to log unhandled actions.
 
 ## Implementation Example
 
