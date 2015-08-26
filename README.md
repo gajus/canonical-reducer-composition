@@ -137,7 +137,7 @@ reducer = {
     cities: {
         ADD_CITY (domain, action) {
             return domain.push(action.city);
-        }
+        },
         REMOVE_CITY (domain, action) {
             return domain.delete(domain.indexOf(action.city));
         }
@@ -147,7 +147,7 @@ reducer = {
         names: {
             ADD_NAME (domain, action) {
                 return domain.push(action.name);
-            }
+            },
             REMOVE_NAME (domain, action) {
                 return domain.delete(domain.indexOf(action.name));
             }
@@ -156,7 +156,7 @@ reducer = {
 };
 
 state = Immutable.fromJS(state);
-reducer = combineReducers(reducers);
+reducer = combineReducers(reducer);
 store = createStore(reducer, state);
 ```
 
