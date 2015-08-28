@@ -26,6 +26,7 @@ Canonical Reducer Composition pattern requires that:
 * Domain **must** own only sub-domains or action handlers.
 * Domain **can** own another domain.
 * Domain **can** own action handlers.
+* Domain **can** own [`CONSTRUCT` action handler](#construct-action-handler).
 
 ### Action Handler
 
@@ -43,6 +44,42 @@ Canonical Reducer Composition pattern requires that:
     * When defined, action `data` property value **must** be a plain object.
 * Action **can** define `metadata` property.
     * When defined, action `metadata` property value **must** be a plain object.
+
+## `CONSTRUCT` Action Handler
+
+* A domain can register `CONSTRUCT` action handler.
+* `CONSTRUCT` can be used to construct the initial domain state.
+
+The application must send `{name: 'CONSTRUCT'}` action to initialise the domain state, e.g.
+
+```js
+import {
+    createStore
+} from 'redux';
+
+import {
+     combineReducers
+} from 'redux-immutable';
+
+import * as reducers from './reducers';
+
+import Immutable from 'immutable';
+
+let reducer,
+    state,
+    store;
+
+reducer = combineReducers(reducers);
+
+state = Immutable.Map({});
+
+// Invoking CONSTRUCT to build the initial state.
+state = reducer(state, {
+    name: 'CONSTRUCT'
+});
+
+store = createStore(reducer, state);
+```
 
 ## Schema
 
@@ -64,6 +101,25 @@ In addition, domain can define a sub-domain:
 {
     <domain>: {
         <domain>: {
+            /**
+             * Constructs the initial domain state.
+             * 
+             * @param {Object} domain
+             * @return {Object}
+             */
+            CONSTRUCT (domain) {
+                
+            },
+            /**
+             * @typedef Action
+             * @see {@link https://github.com/gajus/canonical-reducer-composition#action}
+             * @property {String} name
+             */
+            
+            /**
+             * @param {Object} domain
+             * @param {Action} action
+             */
             <action handler> (domain, action) {
 
             },
@@ -100,8 +156,10 @@ import {
     combineReducers
 } from 'redux-immutable';
 
-let state,
-    reducer,
+import Immutable from 'immutable';
+
+let reducer,
+    state,
     store;
 
 state = {
@@ -112,11 +170,7 @@ state = {
         'DE'
     ],
     // <domain>
-    cities: [
-        'Rome',
-        'Tokyo',
-        'Berlin'
-    ],
+    cities: [],
     // <domain>
     user: {
         // <domain>
@@ -128,13 +182,23 @@ state = {
 }
 
 reducer = {
-    // Implementing country domain reducers using arrow function syntax.
     countries: {
-        ADD_COUNTRY: (domain, action) => domain.push(action.country),
-        REMOVE_COUNTRY: (domain, action) => domain.delete(domain.indexOf(action.country))
+        ADD_COUNTRY: (domain, action) {
+            return domain.push(action.country);
+        },
+        REMOVE_COUNTRY: (domain, action) {
+            return domain.delete(domain.indexOf(action.country));
+        }
     },
-    // Implementing city domain reducers using object method syntax.
     cities: {
+        // Using a constructor.
+        CONSTRUCT () {
+            return [
+                'Rome',
+                'Tokyo',
+                'Berlin'
+            ];
+        },
         ADD_CITY (domain, action) {
             return domain.push(action.city);
         },
@@ -155,8 +219,14 @@ reducer = {
     }
 };
 
-state = Immutable.fromJS(state);
 reducer = combineReducers(reducer);
+
+state = Immutable.fromJS(state);
+// Invoking CONSTRUCT to build the initial state.
+state = reducer(state, {
+    name: 'CONSTRUCT'
+});
+
 store = createStore(reducer, state);
 ```
 
