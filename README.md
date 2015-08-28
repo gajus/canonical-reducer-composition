@@ -4,6 +4,7 @@
    * [Reducer Definition](#reducer-definition)
    * [Domain](#domain)
    * [Action](#action)
+* [`CONSTRUCT` Action Handler](#construct-action-handler)
 * [Schema](#schema)
 * [Implementation Example](#implementation-example)
 * [Benefits](#benefits)
