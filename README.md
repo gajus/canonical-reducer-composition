@@ -41,10 +41,15 @@ Canonical Reducer Composition pattern requires that:
 * Action **must** define `name` property.
     * Action `name` property value **must** be a string.
     * Action `name` property value **must** consist only of uppercase latin characters and one or more underscore characters (`/^[A-Z\_]+$/`).
-* Action **can** define `data` property.
-    * When defined, action `data` property value **must** be a plain object.
-* Action **can** define `metadata` property.
-    * When defined, action `metadata` property value **must** be a plain object.
+* Action **can** define `data` property. When defined,
+    * `data` property value **must** be a plain object.
+* Action **can** define `metadata` property. When defined, 
+    * `metadata` property value **must** be a plain object.
+* Action **can** define `error` property. When defined,
+    * It **must** be an object.
+    * It **can** be an instance of [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error).
+    * It **must** have `message` property.
+    * It **must** have `name` property.
 
 ## `CONSTRUCT` Action Handler
 
