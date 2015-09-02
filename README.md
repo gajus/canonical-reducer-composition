@@ -49,6 +49,7 @@ Canonical Reducer Composition pattern requires that:
     * It **must** be an object.
     * It **can** be an instance of [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error).
     * It **must** have `message` property.
+    * `message` property value **must** be a string.
 
 ## `CONSTRUCT` Action Handler
 
