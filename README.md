@@ -4,6 +4,7 @@
    * [Reducer Definition](#reducer-definition)
    * [Domain](#domain)
    * [Action](#action)
+* [Flux Standard Action](#flux-standard-action)
 * [`CONSTRUCT` Action Handler](#construct-action-handler)
 * [Schema](#schema)
 * [Implementation Example](#implementation-example)
@@ -50,6 +51,10 @@ Canonical Reducer Composition pattern requires that:
     * It **can** be an instance of [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error).
     * It **must** have `message` property.
     * `message` property value **must** be a string.
+
+## Flux Standard Action
+
+[Flux Standard Action](https://github.com/acdlite/flux-standard-action) (FSA) is a competing standard. If you are implementing software using Canonical Reducer Composition and have dependencies that use FSA convention, you can use [`redux-convention`](https://github.com/gajus/redux-convention) middleware to convert between the two standards.
 
 ## `CONSTRUCT` Action Handler
 
