@@ -293,7 +293,7 @@ There are several problems with this:
 
 Libraries that implement Canonical Reducer Composition pattern validation:
 
-* https://github.com/gajus/canonical
+* https://github.com/gajus/canonical-reducer-composition-validator
 
 ## Libraries
 
